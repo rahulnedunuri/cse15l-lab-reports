@@ -55,5 +55,8 @@ The output should look something like this...
 - If we don't count my passphrase keystrokes, I was able to move a file to the remote server, compile the file remotely, and run it remotely in 10 keystrokes (although I did use the up arrow to use prior commands).
 
 
+![](optimize.png)
+
+
 
 ## You are now able to efficiently log onto the remote ieng6 server and use it for storage, retrieval, and running of files in a remote Linux environment!
