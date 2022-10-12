@@ -53,7 +53,7 @@ The output should look something like this...
 - To optimize the moving of a file to the server, you may run multiple commands separated by a semicolon ";".
 - For example, you may wish to use a single line on the terminal to copy your file using *scp* while also logging onto the server via *ssh* and compiling and running your file remotely.
 - If we don't count my passphrase keystrokes, I was able to move a file to the remote server, compile the file remotely, and run it remotely in 10 keystrokes (although I did use the up arrow to use prior commands).
-
+- from the local directory use: 
 $ scp WhereAmI.java cs15l22ps@ieng6.ucsd.edu:~/; ssh cs15lfa22ps@ieng6.ucsd.edu "javac WhereAmI.java; java WhereAmI"
 
 ![](optimize.png)
