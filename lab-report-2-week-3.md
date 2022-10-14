@@ -5,7 +5,7 @@
 
 ---
 
-## **Part 1** 
+## **Part 1: SearchEngine** 
 
 - using the SearchEngine.java file, an integer value between 1024 and 49151 can be run along with the compiled file using the following commands
 ```
@@ -55,5 +55,5 @@ String[] parameters = url.getQuery().split("=");
 ## By using a URL handler and command line input which generates a port server, we are able to create this basic search engine by utilizing the query portion of URLs!
 ___
 
-## **Part 2**
+## **Part 2: Debugging**
 
