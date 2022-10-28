@@ -72,7 +72,7 @@ find ./technical/biomed/*.txt //this searches for all files in the biomed direct
 - this output is useful for later filtering of specific files ending with .txt in biomed
 - it is important for getting files containing a certain set of letters in the file name
 
-## find -links N
+## find -links N filename
 - looks for files with N number of links
 ## find -print
 - shows the path of the found files
