@@ -28,6 +28,7 @@ Server Started! Visit http://localhost:2000 to visit.
 - this list variable is also used when the query contains "/search"; this behavior will be explained further below!
 
 ```
+// the following will execute if "/add" is detected in the query of the url
 System.out.println("Path: " + url.getPath());
 String[] parameters = url.getQuery().split("=");
 list.add(parameters[1]);
@@ -58,7 +59,9 @@ return ("Now contains: " + list.toString());
 - the results contain all the words that contain "a" which are both the instances of "appple" and "banana" which were added
 
 - If "/search" is found in the query, the following lines are executed
+
 ```
+// the following will execute if "/search" is detected in the query of the url
 System.out.println("Path: " + url.getPath());
 String[] parameters = url.getQuery().split("=");
 String output = "results: ";
