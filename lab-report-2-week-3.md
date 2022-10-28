@@ -20,28 +20,69 @@ Server Started! Visit http://localhost:2000 to visit.
 - here are some examples...
 
 ## After entering the URL, http://localhost:2000, use /add?s=String to add a search item to the registry; the query after = can be any String and is added once the page is refreshed
+
+- when the query contains "/add", the following lines are executed (see below)
+- these lines get the url's path then split the String holding the path at the index where the "=" is found 
+- since the split method will separate the method into a single letter (just before the "=") at index 0 and everything after the "=" at index 1 in the parameters array
+- note that the list variable is an ArrayList that has already been initialized and will hold the String that is located in the query after "/add?s="
+- this list variable is also used when the query contains "/search"; this behavior will be explained further below!
+```
+System.out.println("Path: " + url.getPath());
+            
+String[] parameters = url.getQuery().split("=");
+list.add(parameters[1]);
+return ("Now contains: " + list.toString());
+```
+
 ![](addapple.png)
 - url.getPath().contains("/add") and url.getQuery() are performed to add the query "apple"
-
+- in this case, the "/add" part of the query is found in the url path so the above lines of code are executed
+- the path is split into an array that contains "s" at parameters[0] and "apple" at parameters[1]
+- parameters[1] or "apple" is then added to the list that has the potential to be searched with "/search"
 
 ***after refreshing***
 ![](apple2.png)
 - url.getPath().contains("/add") and url.getQuery() are performed to add the query "apple" once again
+- once again, the query is split at the "=" into an array that contains "s" at index 0 and "apple" at index 1
+- since refreshing the page has the same effect as entering the same query twice, "apple" is added to the list again, which now contains 2 instances of apple
 
 ***adding "banana"***
 ![](banana.png)
 - url.getPath().contains("/add") and url.getQuery() are performed to add the query "banana"
+- now, the new query is passed to the method via url.getPath()
+- the parameters array will be a splitted version of the query, and will contain "s" at index 0 and "apple" at index 1; once again index 1 is added to the list
 
 ***now we can search for any words containing "a" by using http://localhost:2000/search?s=a***
 ![](searchresult1.png)
 - url.getPath().contains("/search") is used to identify the search functionality being called and url.getQuery().split("=") is used to split the query into the string before the = (stored at parameters[0]) and the string after the = (stored at parameters[1])
 - the results contain all the words that contain "a" which are both the instances of "appple" and "banana" which were added
 
+- If "/search" is found in the query, the following lines are executed
+```
+System.out.println("Path: " + url.getPath());
+
+String[] parameters = url.getQuery().split("=");
+String output = "results: ";
+for(String s : list){
+    if(s.contains(parameters[1])) {
+        output = output + " " + s;
+    }
+}
+return output;
+```
+- this block is essentially splliting the path at "=" (like earlier with the "/add" functionality) then traversing through the previously added strings in the list to see if any contain the new query at parameters[1]
+- for every previously added String that contains the new query after "/search?s=", the previously added String is added to the output String that will be returned and displayed on the webpage
+
 - if we instead search for "ban", we should expect to only get "banana" in our results...
 
 ![](search2.png)
 ***our expectation was correct***
+- in this case, the query is split at "=" and the parameters array will contain "ban" at index 1
+- every existing String in the list will be checked for containing "ban" or not
+- in this case, the list contains "apple" "apple" and "banana" so the expected result of "banana" holds true
 
+
+-
 - while all these queries were passed to the search bar, the command line looks like this...
 
 ![](commandlinesearches.png)
