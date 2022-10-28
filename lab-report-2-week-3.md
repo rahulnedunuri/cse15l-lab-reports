@@ -36,7 +36,7 @@ return ("Now contains: " + list.toString());
 
 ![](addapple.png)
 - url.getPath().contains("/add") and url.getQuery() are performed to add the query "apple"
-- in this case, the "/add" part of the query is found in the url path so the above lines of code are executed
+- in this case, the "/add" part of the query is found in the url query so the above lines of code are executed
 - the path is split into an array that contains "s" at parameters[0] and "apple" at parameters[1]
 - parameters[1] or "apple" is then added to the list that has the potential to be searched with "/search"
 
@@ -49,7 +49,7 @@ return ("Now contains: " + list.toString());
 ***adding "banana"***
 ![](banana.png)
 - url.getPath().contains("/add") and url.getQuery() are performed to add the query "banana"
-- now, the new query is passed to the method via url.getPath()
+- now, the new query is passed to the method via url.getQuery()
 - the parameters array will be a splitted version of the query, and will contain "s" at index 0 and "apple" at index 1; once again index 1 is added to the list
 
 ***now we can search for any words containing "a" by using http://localhost:2000/search?s=a***
@@ -69,7 +69,7 @@ for(String s : list){
 }
 return output;
 ```
-- this block is essentially splliting the path at "=" (like earlier with the "/add" functionality) then traversing through the previously added strings in the list to see if any contain the new query at parameters[1]
+- this block is essentially splliting the query at "=" (like earlier with the "/add" functionality) then traversing through the previously added strings in the list to see if any contain the new query at parameters[1]
 - for every previously added String that contains the new query after "/search?s=", the previously added String is added to the output String that will be returned and displayed on the webpage
 
 - if we instead search for "ban", we should expect to only get "banana" in our results...
