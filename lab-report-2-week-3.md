@@ -26,9 +26,9 @@ Server Started! Visit http://localhost:2000 to visit.
 - since the split method will separate the method into a single letter (just before the "=") at index 0 and everything after the "=" at index 1 in the parameters array
 - note that the list variable is an ArrayList that has already been initialized and will hold the String that is located in the query after "/add?s="
 - this list variable is also used when the query contains "/search"; this behavior will be explained further below!
+
 ```
 System.out.println("Path: " + url.getPath());
-            
 String[] parameters = url.getQuery().split("=");
 list.add(parameters[1]);
 return ("Now contains: " + list.toString());
@@ -60,7 +60,6 @@ return ("Now contains: " + list.toString());
 - If "/search" is found in the query, the following lines are executed
 ```
 System.out.println("Path: " + url.getPath());
-
 String[] parameters = url.getQuery().split("=");
 String output = "results: ";
 for(String s : list){
@@ -88,6 +87,7 @@ return output;
 ![](commandlinesearches.png)
 - these lines show up in the terminal when a string is added or searched for because the SearchEngine.java file contains a URL handler that prints the URL path every time add or search is called
 - the handler uses the following line to interpret the query portion of the URL (which is the string that is added to our search registry)
+
 ```
 String[] parameters = url.getQuery().split("=");
 //parameters[1] contains the String from the query that is either being added or searched for
