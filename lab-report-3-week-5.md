@@ -7,8 +7,9 @@
 - the less command essentially takes the file name argument and outputs all content of the chosen file one page at a time in the terminal window
 
 ```
-//using directories from ./technical
-less ./technical/biomed/rr74.txt //rr74.txt = file name
+# using directories from ./technical
+# rr74.txt = file name
+less ./technical/biomed/rr74.txt 
 ```
 *output*
 ![Image](lessNormal.png)
@@ -43,7 +44,7 @@ less -E ./technical/biomed/rr172.txt
 - this more efficient to see a file then return to the terminal for further commands without having to press the q key to exit
 
 ## less -m filename
-- this option looks for the file matching the filename but also displays path of the file and percentage of the file that is above a certain window (like a progress bar for reading the file as you read through it)
+- this option looks for the file matching the argument but also displays path of the file and percentage of the file that is above a certain window (like a progress bar for reading the file as you read through it)
 - this is very helpful for in depth reading of a file to know the how far deep into the file content you are at any given point of time
 
 ```
@@ -57,13 +58,13 @@ less -m ./technical/government/Alcohol_Problems/Session2-PDF.txt
 
 ![Image](less-m2.png)
 
-# find filename
-- the find command will search for all files that match the given filename argument
+# find filedirectory
+- the find command will search for all files that match the given filedirectory argument
 - this command is useful for visualizing a list of all files that contain a certain name or file type
 
 ```
-//using directories from ./technical
-find ./technical/biomed/*.txt //this searches for all files in the biomed directory of type .txt
+# using directories from ./technical
+find ./technical/biomed/*.txt # this searches for all files in the biomed directory of type .txt
 ```
 
 *output*
@@ -72,12 +73,45 @@ find ./technical/biomed/*.txt //this searches for all files in the biomed direct
 - this output is useful for later filtering of specific files ending with .txt in biomed
 - it is important for getting files containing a certain set of letters in the file name
 
-## find -links N filename
-- looks for files with N number of links
-## find -print
-- shows the path of the found files
-## find empty
-- looks for all empty files
+## find -s filedirectory
+- this command for all files matching the filedirectory  which is passed as the argument, BUT it also sorts the output in alphabetical/numerical order
+- this is useful if the file names are intended to be sorted before being processed or analyzed
+
+```
+find -s ./technical/biomed/gb* 
+# sorts all files in biomed directory that 
+# contain "gb" in the name
+```
+*output*
+![Image](find-s.png)
+- with the above output when the find -s command is run, it is apparent that the output of all the file names are sorted
+- the output begins with file names containing 2000 after the "gb-" and then progressively increases to 2001, 2002, and so on 
+- this option for the find command is especially useful to sort files by alphabetic order or by year of the file's publication (as seen in the above example)
+
+## find directorypath -mindepth int
+- this option of find shows all files in the given directory that have a minimum depth of the integer value passed in the argument
+- this is very useful for determining tree structure of files and directories, especially when trying to determine how deep certain files are and the time complexity of accessing these files
+
+```
+find ./technical -mindepth 3
+```
+*output*
+![Image](find-mindepth.png)
+- here, it is evident that the files being displayed all have a minimum depth value of 3, because thery are nested 3 levels deeper than the ./technical directory path given in the argument
+- this is useful if attempting to find all files within 2 other folders in the technical directory
+
+## find directorypath -empty
+- looks for all empty files within a certain directory
+- this is useful if attempting to delete empty files after certain edits are made on a large scale
+- by gathering all empty file names withiin a directory path, it is easier to weed through blank files and tighten up the directory by only keeping mandatory files!
+```
+find ./technical/biomed -empty
+```
+*output* 
+![Image](find-e.png)
+
+- the output in this case is blank because there are no empty files in the biomed directory
+- as such, we can use this command to check for empty files and since there are no empty files in biomed, we don't need to remove any blank files!
 
 # grep
 - //add description
