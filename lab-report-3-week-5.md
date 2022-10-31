@@ -113,11 +113,64 @@ find ./technical/biomed -empty
 - the output in this case is blank because there are no empty files in the biomed directory
 - as such, we can use this command to check for empty files and since there are no empty files in biomed, we don't need to remove any blank files!
 
-# grep
-- //add description
-## grep -c
-- shows the number of lines that matched the argument
-## grep -l
-- shows a list of all filenames that contain the argument being searched for
-## grep -i
-- isn't case sensitive in searching
+# grep "string" filedirectory
+- the grep command searches for occurrences of the given "string" in the content of all files under the given filedirectory
+- this is useful when attempting to search for a specific word/phrase/pattern in a file or directory of files
+
+```
+# to search for "pharmaceutical" in all txt 
+#        files in the biomed directory
+grep "pharmaceutical" ./technical/biomed/*.txt
+```
+*output*
+![Image](grep.png)
+
+- the output observed is the filepath of all txt files in the biomed folder that contain the string "pharmaceutical"
+- this is very useful when working with a large amount of files and trying to parse through them by checking for relevant Strings such as words, sentences, or phrases
+
+## grep -n "String" filedirectory
+- this shows the line numbers of the occurrences that matched the argument string
+- this is useful for assessing relative location of a phrase within multiple files because it could provide useful information about where in the file a certain detail exists!
+
+```
+grep -n "biologically" ./technical/biomed/*
+```
+
+*output*
+
+![Image](grep-n.png)
+
+- evidently, this option of grep provided us with the line numbers (right next to the file path) where the String was found
+- this is useful in the event that we are trying to determine how deep into a file a certain string occurs, or specifically where in the file the specified string is found
+
+## grep -w "String" filedirectory
+- this option displays all occurrences of the exact String as a word in the given file path
+- this is useful when searching for a specific word or string and not a larger phrase that contains these same letters
+- for example, the following command searches for a string in the plos directory
+
+```
+grep -w "look" ./technical/plos/*
+```
+
+- this command will look for all occurences of the word "look" excluding larger words that contain this String
+- in other words, "looking" or "looks" won't be outputted to the terminal
+- grep -w is useful for finding specific words (not contained in larger strings) such as smaller words/phrases that normally found in many large words/sentences
+
+*output*
+![Image](grep-w.png)
+
+
+## grep -i "STRING" filedirectory
+- this option is not case sensitive when searching for the given string in the file directory
+
+```
+grep -i "ZEbRAFiSH" ./technical/biomed/* 
+```
+
+*output*
+![Image](grep-i.png)
+
+
+- this example shows how the -i option turns off case sensitivity and returns all occurences of "zebrafish" to the terminal (many of which are completely lowercase)
+- this is useful for searching for terms that can either be capital if found at the start or middle of a sentence because they would be capitalized differently depending on the location
+
