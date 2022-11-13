@@ -15,7 +15,9 @@ vim DocSearchServer.java
 - in order to swap all the instances of "start" with "base" in the getFiles() method, we use the following characters
 
 **21 keys to make this change**
-- /start<Enter>cebase<ESC>n.n.:wq
+```
+/start<Enter>cebase<ESC>n.n.:wq
+```
 
 - let's break down each command and the effect on the file
 
