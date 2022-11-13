@@ -47,14 +47,14 @@ vim DocSearchServer.java
 
 
 
-- **Part 2: SCP Vim edits vs Vim on a Remote Server**
+- **Part 2: SCP Local edits vs Vim on a Remote Server**
 - we will now be comparing the efficiency of making the same edit made in part 1 in different ways...
-1. making a local edit on Vim and SCP-ing the file to a server
+1. making a local edit on VS Code and SCP-ing the file to a server
 2. making the same edit to a file using Vim on the remote server
 
 1. local edit then SCP
     - this process took approximately **100 seconds** to complets
-    - first, the file is editted locally with vim (vim DocSearchServer.java)
+    - first, the file is editted locally with VS Code 
     - then, the file is run locally after the edit (bash test.sh)
     - then, only the editted file is scp-ed to the remote ieng server
     ```
@@ -76,7 +76,7 @@ vim DocSearchServer.java
 - Overall, I would prefer cloning the repository directly into the remote server and editting the files remotely since it prevents the need to move files around and worry about which directory contains the updated version of the file. Method 2, doing remote edits using vim on the server seemed to work faster for me. 
 
 Some aspects of a project that would affect my decision to edit locally or remotely...
-- project include the volume of files that are editted/altered; more file edits would make the argument to edit remotely even stronger since there is no worry about scp-ing the files
-- how complex the edits are; if edits require more testing or work, I would rather edit locally first before uploading to the server
+- the volume of files that are editted/altered; more file edits would make the argument to edit remotely even stronger since there is no worry about scp-ing the files
+- how complex the edits are; if edits require more testing or work, I would rather edit locally first on VS Code before uploading to the server
 - who has access to the remote server; if multiple people will be using the file on the remote server, I would edit locally until the file is effective then scp it to the server so other collaborators wouldn't be working with a possibly incomplete/buggy file
 
