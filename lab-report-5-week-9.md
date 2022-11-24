@@ -48,7 +48,7 @@ fi
 
 ```
 
-##**We will now take a look at what this grader script can do when given repositories of student submissions; specifically, we will look at the output for submissions with incorrect file name, syntax errors, or proper functionality.
+## **We will now take a look at what this grader script can do when given repositories of student submissions; specifically, we will look at the output for submissions with incorrect file name, syntax errors, or proper functionality.**
 
 - Incorrect file name (0%) (https://github.com/ucsd-cse15l-f22/list-methods-filename)
 
