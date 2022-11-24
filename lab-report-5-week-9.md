@@ -1,5 +1,8 @@
 ## **Hello! In this lab report we will discuss a bash file that can be used to test student submissions of a ListExamples.java file**
 
+
+- **First, we will take a look at the grade.sh bash script that we will use to score student submissions...**
+
 ```
 #grade.sh file used to grade student submissions
 
@@ -44,4 +47,45 @@ else
 fi
 
 ```
+
+##**We will now take a look at what this grader script can do when given repositories of student submissions; specifically, we will look at the output for submissions with incorrect file name, syntax errors, or proper functionality.
+
+- Incorrect file name (0%) (https://github.com/ucsd-cse15l-f22/list-methods-filename)
+
+![Image](incorrectfilename.png)
+
+- Syntax errors (20%) (https://github.com/ucsd-cse15l-f22/list-methods-signature)
+
+![Image](compileerror.png)
+
+- Proper functionality (100%) (https://github.com/ucsd-cse15l-f22/list-methods-corrected)
+
+![Image](properfile.png)
+
+
+----
+----
+### Basically, the grade script is giving points as follows...
+- 0 points if the file ListExamples.java is not located 
+- 20 points if the file is submitted but doesn't compile 
+- 50 points if the right file is submitted and compiles and another
+- 25 points for passing each of the 2 JUnit Tests that test the merge() and filter() methods in ListExamples.java
+
+**for a total of 100 points**
+
+-----
+
+## Tracing the Script for the Wrong File Submission
+
+![Image](gradesh1.png)
+- Lines 1-6 are involved with removing the directory and all have a zero exit code. The if block will only execute if there is a previously graded student submission sitting in the directory.
+- Line 7 will clone the student repository from either the query (if loaded on a browser) or from the first argument in the command line. The exit code is 1 and there is no output other than "Cloning into 'student-submission'..."
+- Line 9's if block will not execute since the student submission we are tracing has the wrong file name. The exit code is nonzero. The standard output and error are both blank for this line.
+
+![Image](gradesh2.png)
+- Now we jump to Line 35 which begins the else component of the if block
+- Line 36 will have standard output that "ListExamples file not found" and will have an exit code of 0. There is no standard error.
+- Line 37 will have a standard output of "Score: 0/100" and an exit code of 0. It also has no standard error.
+- Line 38 has no standard error or standard output, and simply exits with the nonzero exit code of 1.
+
 
