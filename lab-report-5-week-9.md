@@ -68,7 +68,7 @@ fi
 ### Basically, the grade script is giving points as follows...
 - 0 points if the file ListExamples.java is not located 
 - 20 points if the file is submitted but doesn't compile 
-- 50 points if the right file is submitted and compiles and another
+- 50 points if the right file is submitted and compiles
 - 25 points for passing each of the 2 JUnit Tests that test the merge() and filter() methods in ListExamples.java
 
 **for a total of 100 points**
