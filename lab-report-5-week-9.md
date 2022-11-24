@@ -78,9 +78,9 @@ fi
 ## Tracing the Script for the Wrong File Submission
 
 ![Image](gradesh1.png)
-- Lines 1-6 are involved with removing the directory and all have a zero exit code. The if block will only execute if there is a previously graded student submission sitting in the directory.
+- Lines 1-6 are involved with removing the directory and all have a zero exit code. The if block will only execute if there is a previously graded student submission sitting in the directory. (In this case the if statement was true).
 - Line 7 will clone the student repository from either the query (if loaded on a browser) or from the first argument in the command line. The exit code is 1 and there is no output other than "Cloning into 'student-submission'..."
-- Line 9's if block will not execute since the student submission we are tracing has the wrong file name. The exit code is nonzero. The standard output and error are both blank for this line.
+- Line 9's if block will not execute since the student submission we are tracing has the wrong file name so this condition is false. The exit code is nonzero. The standard output and error are both blank for this line.
 
 ![Image](gradesh2.png)
 - Now we jump to Line 35 which begins the else component of the if block
